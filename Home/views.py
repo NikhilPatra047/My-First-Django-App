@@ -1,5 +1,5 @@
 from django.shortcuts import render, HttpResponse
-from Home.models import Home_contact
+from Home.models import Contact
 from datetime import datetime
 
 # Create your views here.
@@ -27,7 +27,7 @@ def contact(request):
         phone = request.POST.get('phone')
         desc = request.POST.get('desc')
 
-        contact = Home_contact(name = name, email = email, phone = phone, desc = desc, date = datetime.today())
+        contact = Contact(name = name, email = email, phone = phone, desc = desc, date = datetime.today())
         contact.save()
     # return HttpResponse("This is the contact page")
         return render(request, "status.html", {"status": "success", "msg": "Form successfully submitted", "flag": 1})
